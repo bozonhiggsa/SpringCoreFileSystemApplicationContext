@@ -9,10 +9,12 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  * @version 1.0
  */
 public class MessageRunnerWithFileSystemApplicationContext {
+
     public static void main(String[] args) {
         ApplicationContext context =
-                new FileSystemXmlApplicationContext("classpath:message-bean.xml");
-        Message message = (Message) context.getBean("fromBeanMessage");
-        System.out.println(message.getMessage());
+                new FileSystemXmlApplicationContext("classpath:spring_config.xml");
+
+        Messager messager = context.getBean("beanMessager", Messager.class);
+        messager.printMessage();
     }
 }
